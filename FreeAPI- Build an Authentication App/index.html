@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeAPI Auth Application</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4 font-sans text-gray-800">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-5 right-5 px-6 py-3 rounded-lg shadow-lg text-white font-medium transition-opacity duration-300 opacity-0 pointer-events-none z-50">
+        Message goes here
+    </div>
+
+    <!-- Main Container -->
+    <div class="w-full max-w-md bg-white rounded-xl shadow-md p-8 relative overflow-hidden">
+        
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center z-40 hidden">
+            <div class="w-10 h-10 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+        </div>
+
+        <!-- App Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold text-gray-900">Auth Project</h1>
+            <p id="headerSubtitle" class="text-sm text-gray-500 mt-1">Please log in or register</p>
+        </div>
+
+        <!-- LOGIN SCREEN -->
+        <div id="loginScreen" class="block">
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Username</label>
+                    <input type="text" id="loginUsername" required class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" id="loginPassword" required class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 outline-none">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition">Log In</button>
+            </form>
+            <p class="text-center text-sm text-gray-500 mt-6">
+                Don't have an account? <a href="#" id="showRegisterBtn" class="text-blue-600 hover:underline">Register</a>
+            </p>
+        </div>
+
+        <!-- REGISTER SCREEN -->
+        <div id="registerScreen" class="hidden">
+            <form id="registerForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Username</label>
+                    <input type="text" id="regUsername" required class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="regEmail" required class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" id="regPassword" required class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 outline-none">
+                </div>
+                <!-- Role is hardcoded to ADMIN in the JS payload per project requirements -->
+                <button type="submit" class="w-full bg-green-600 text-white font-semibold py-2 rounded-lg hover:bg-green-700 transition">Create Account</button>
+            </form>
+            <p class="text-center text-sm text-gray-500 mt-6">
+                Already have an account? <a href="#" id="showLoginBtn" class="text-blue-600 hover:underline">Log In</a>
+            </p>
+        </div>
+
+        <!-- DASHBOARD / PROFILE SCREEN -->
+        <div id="dashboardScreen" class="hidden text-center">
+            <div class="bg-blue-50 rounded-lg p-6 mb-6">
+                <div class="w-16 h-16 bg-blue-200 text-blue-700 rounded-full flex items-center justify-center mx-auto text-2xl font-bold mb-4" id="avatarLetter">U</div>
+                <h2 class="text-xl font-bold text-gray-900" id="profileName">Loading...</h2>
+                <p class="text-gray-600 text-sm mb-2" id="profileEmail">loading@email.com</p>
+                <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full uppercase tracking-wide font-semibold" id="profileRole">USER</span>
+            </div>
+            <button id="logoutBtn" class="w-full border-2 border-red-500 text-red-500 font-semibold py-2 rounded-lg hover:bg-red-50 transition">Log Out</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
