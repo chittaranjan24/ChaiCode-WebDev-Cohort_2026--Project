@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ha-Ha Hub — Jokes Viewer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <!-- Background blobs -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <span class="logo-icon">😂</span>
+          <span class="logo-text">Ha<span class="logo-accent">·</span>Ha Hub</span>
+        </div>
+        <div class="header-right">
+          <div class="liked-counter" id="likedCounter" title="Liked jokes">
+            <span>❤️</span>
+            <span id="likedCount">0</span>
+          </div>
+          <button class="btn-outline" id="showLikedBtn">Liked Only</button>
+          <button class="btn-primary" id="loadMoreBtn">
+            <span class="btn-icon">↻</span>
+            Load More
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <p class="hero-eyebrow">Your daily dose of</p>
+      <h1 class="hero-title">Endless <span class="hero-highlight">Laughter</span></h1>
+      <p class="hero-sub">Browse, like, and copy jokes — one card at a time.</p>
+
+      <!-- Controls -->
+      <div class="controls">
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search jokes..."
+            autocomplete="off"
+          />
+          <button class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
+        </div>
+        <select id="categoryFilter" class="select">
+          <option value="">All Categories</option>
+        </select>
+        <select id="sortSelect" class="select">
+          <option value="default">Sort: Default</option>
+          <option value="az">Sort: A → Z</option>
+          <option value="za">Sort: Z → A</option>
+          <option value="liked">Sort: Liked First</option>
+        </select>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="stats-bar">
+        <span class="stat" id="totalStat">
+          <strong id="totalCount">0</strong> jokes loaded
+        </span>
+        <span class="stat-sep">·</span>
+        <span class="stat" id="shownStat">
+          <strong id="shownCount">0</strong> shown
+        </span>
+        <span class="stat-sep">·</span>
+        <span class="stat">
+          <strong id="likedStatCount">0</strong> liked
+        </span>
+      </div>
+    </section>
+
+    <!-- Main content -->
+    <main class="main">
+
+      <!-- Loader -->
+      <div class="loader-wrap" id="loaderWrap">
+        <div class="loader">
+          <span>😂</span>
+          <span>🤣</span>
+          <span>😆</span>
+        </div>
+        <p class="loader-text">Fetching the funnies…</p>
+      </div>
+
+      <!-- Error state -->
+      <div class="error-state hidden" id="errorState">
+        <div class="error-icon">😵</div>
+        <h2>Oops! Couldn't load jokes.</h2>
+        <p>Check your internet connection and try again.</p>
+        <button class="btn-primary" onclick="retryFetch()">Try Again</button>
+      </div>
+
+      <!-- Empty state -->
+      <div class="empty-state hidden" id="emptyState">
+        <div class="empty-icon">🤷</div>
+        <h2>No jokes found</h2>
+        <p>Try a different search or category.</p>
+        <button class="btn-outline" onclick="resetFilters()">Clear Filters</button>
+      </div>
+
+      <!-- Joke grid -->
+      <div class="joke-grid" id="jokeGrid"></div>
+
+    </main>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Joke Modal -->
+    <div class="modal-backdrop hidden" id="modalBackdrop">
+      <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalJokeText">
+        <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+        <div class="modal-emoji" id="modalEmoji">😂</div>
+        <p class="modal-joke" id="modalJokeText"></p>
+        <div class="modal-meta">
+          <div class="modal-cats" id="modalCats"></div>
+          <span class="modal-id" id="modalId"></span>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-primary" id="modalCopyBtn">📋 Copy Joke</button>
+          <button class="btn-outline" id="modalLikeBtn">❤️ Like</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
