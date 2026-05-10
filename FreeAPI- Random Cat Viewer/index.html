@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Cat Viewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="min-h-screen bg-orange-50 flex flex-col items-center justify-center px-4 py-10">
+
+    <!-- Header -->
+    <h1 class="text-4xl font-bold text-orange-500 mb-1 tracking-tight">🐱 Cat of the Moment</h1>
+    <p class="text-gray-400 text-sm mb-8">Click the button to meet a new cat</p>
+
+    <!-- Card -->
+    <div class="bg-white rounded-3xl shadow-xl w-full max-w-sm overflow-hidden">
+
+      <!-- Image area -->
+      <div class="relative w-full h-64 bg-orange-100 flex items-center justify-center overflow-hidden">
+
+        <!-- Skeleton -->
+        <div id="skeleton" class="skeleton absolute inset-0"></div>
+
+        <!-- Error -->
+        <div id="errorBox" class="hidden absolute inset-0 flex flex-col items-center justify-center gap-2 bg-orange-50 z-10">
+          <span class="text-4xl">🙀</span>
+          <p class="text-gray-400 text-sm text-center">Failed to load.<br/>Try again!</p>
+        </div>
+
+        <!-- Cat image -->
+        <img
+          id="catImage"
+          src=""
+          alt="Random cat"
+          class="cat-img absolute inset-0 w-full h-full object-cover opacity-0"
+        />
+      </div>
+
+      <!-- Info -->
+      <div class="p-5">
+        <h2 id="catName" class="text-xl font-bold text-gray-800 mb-1">Loading...</h2>
+        <p id="catOrigin" class="text-xs text-orange-400 font-medium mb-3">—</p>
+        <p id="catDesc" class="text-gray-500 text-sm leading-relaxed line-clamp-3 mb-4">
+          Fetching cat info...
+        </p>
+
+        <!-- Tags -->
+        <div id="tagRow" class="flex flex-wrap gap-2 mb-5"></div>
+
+        <!-- Button -->
+        <button
+          id="nextBtn"
+          onclick="fetchCat()"
+          class="w-full bg-orange-400 hover:bg-orange-500 active:scale-95 transition-all text-white font-semibold py-3 rounded-2xl text-base"
+        >
+          Next Cat 🐾
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer note -->
+    <p class="text-gray-300 text-xs mt-6">Powered by FreeAPI.app</p>
+
+    <script src="script.js"></script>
+  </body>
+</html>

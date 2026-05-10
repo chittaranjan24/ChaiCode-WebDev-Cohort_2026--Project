@@ -1,0 +1,22 @@
+/* Skeleton shimmer */
+.skeleton {
+  background: linear-gradient(90deg, #fed7aa 25%, #ffedd5 50%, #fed7aa 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Cat image fade-in transition */
+.cat-img {
+  transition: opacity 0.4s ease;
+}
+
+/* Prevent button double-click flash */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
