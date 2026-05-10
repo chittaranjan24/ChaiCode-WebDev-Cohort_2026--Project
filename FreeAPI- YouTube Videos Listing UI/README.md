@@ -52,19 +52,35 @@ The application follows a simple data flow:
 Here is a graphical representation of the process:
 
 ```mermaid
-graph TD
-    A[Start: Page Load] --> B{Call fetchVideos()};
-    B --> C[Show Loading Spinner];
-    C --> D{Fetch data from API};
-    D --> E{API Success?};
-    E -- Yes --> F[Parse JSON Response];
-    F --> G[Map video data to HTML cards];
-    G --> H[Render cards & pagination];
-    H --> I[Add button event listeners];
-    I --> J[End: UI Updated];
-    E -- No --> K[Show Error Message];
-    K --> J;
-    I -- Click 'Next'/'Prev' --> B;
+flowchart TD
+
+    A[Page Load]
+    B[Fetch Videos]
+    C[Show Loader]
+    D[Call API]
+    E{Success?}
+    F[Parse Response]
+    G[Generate Cards]
+    H[Render UI]
+    I[Attach Events]
+    J[UI Updated]
+    K[Show Error]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+
+    E -->|Yes| F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+
+    E -->|No| K
+    K --> J
+
+    I -->|Pagination Click| B
 ```
 
 ## Getting Started
