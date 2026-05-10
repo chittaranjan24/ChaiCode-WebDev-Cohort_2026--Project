@@ -4,7 +4,7 @@ This project is a simple, clean, and responsive web application that fetches and
 
 ## Live Demo
 
-[Insert your live demo link here](https://example.com)
+[Insert your live demo link here]([https://example.com](https://chai-code-web-dev-cohort-2026-proje.vercel.app/))
 
 ## Features
 
