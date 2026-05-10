@@ -37,10 +37,6 @@ This project uses the free quotes API from [FreeAPI](https://freeapi.app/).
 └── style.css       # CSS for styling the application
 ```
 
-## Screenshots
-
-*Add screenshots of your application here.*
-
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
